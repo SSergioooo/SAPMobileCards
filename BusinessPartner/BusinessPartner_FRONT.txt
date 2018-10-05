@@ -1,0 +1,105 @@
+
+<div id="mySimpleTemplate" class="myTemplate" data-type="text/x-handlebars-template">
+    <div class="header" style="height: 30px">
+        <div style="text-align: left;">
+            <span style="font-weight: bold; font-size: 24px; float: left; color: #fffeee; display: inline; padding-top: 8px">
+                Business Partner Information
+            </span>
+        </div>
+    </div>
+     <div class="header" style="height: 30px">
+        <div style="text-align: left;">
+            <span style="float: left; clear: right; display: inline; font-size: 17px; color: #fafafa; padding-top: 4px">
+                {{CompanyName}}
+            </span>
+        </div>
+        <div style="text-align: right;">
+            <span style="float: right; clear: right; display: inline; font-size: 17px; color: #fafafa; padding-top: 4px">
+                {{BusinessPartnerID}}
+            </span>
+        </div>
+    </div>    
+    <div class="card-content">
+        <div class="listitem">
+            <div class="listitem-label">
+                <span>
+                    Web Address
+                </span>
+            </div>
+            <br>
+            <div class="listitem-value">
+                <span class="c2g_website">
+                    {{WebAddress}}
+                </span>
+            </div>
+        </div>
+        <div class="listitem">
+            <div class="listitem-label">
+                <span>
+                    E-mail address
+                </span>
+            </div>
+            <br>
+            <div class="listitem-value">
+                <span class="c2g_email">
+                    {{EmailAddress}}
+                </span>
+            </div>
+        </div>
+        <div class="listitem">
+            <div class="listitem-label">
+                <span>
+                    Address
+                </span>
+            </div>
+            <br>
+            <div class="listitem-value">
+                <span class="c2g_address">
+                    {{d.Address.Country}}
+                    {{d.Address.City}}
+                    {{d.Address.Street}}
+                    {{d.Address.Building}}
+                </span>
+            </div>
+        </div>
+        <div class="listitem">
+            <div class="listitem-label">
+                <span>
+                    Phone Number
+                </span>
+            </div>
+            <br>
+            <div class="listitem-value">
+                <span class="c2g_phoneNumber">
+                    {{PhoneNumber}}
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="listitem">
+            <div class="listitem-label">
+                <span style="float:left; width:100%;
+            text-align:center; font-weight:bold;
+            text-overflow:ellipsis;
+            overflow:hidden; white-space:nowrap">
+                    Contact Persons
+                </span>
+            </div>
+            <br>
+        </div>
+        {{#each Contacts}}
+        <div style="clear:left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+            <span style="float:left; width:100%;
+            text-align:left; font-weight:bold;
+            text-overflow:ellipsis;
+            overflow:hidden; white-space:nowrap">
+            <div>
+                <div style="float:left; width:33%">{{Name}} &nbsp;</div>
+                <div style="float:left; width:33%">{{LastName}} &nbsp;</div>
+                <div style="float:left; width:33%">{{PhoneNumber}}</div>
+            </div>
+            </span>
+        </div>
+    {{/each}}
+    </div>
+</div>

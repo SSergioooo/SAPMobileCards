@@ -1,0 +1,1 @@
+/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/SalesOrderSet?$top=3&$skip=8&$expand=ToLineItems,ToBusinessPartner&$format=json

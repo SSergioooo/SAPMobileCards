@@ -1,0 +1,33 @@
+
+<div id="mySimpleTemplate" data-type="text/x-handlebars-template">
+    <div class="myTemplate" style="padding:16px">
+    <div class="header" style="height: 30px;">
+        <div style="text-align:center; font-size: 24px; color: #fffeee; font-weight: bold;">
+            Sales Orders
+        </div>
+    </div>
+    <div style="clear:left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; text-align:center">
+        <div style="float:left; width:25%; text-align:center">OrderID</div>
+        <div style="float:left; width:25%">Status</div>
+        <div style="float:left; width:25%">Amount</div>
+        <div style="float:left; width:25%">Currency</div>
+    </div>
+     
+     {{#each d.SalesOrder.results}}
+        <div style="clear:left; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+            <span style="float:left; width:100%;
+            text-align:right; font-weight:bold;
+            text-overflow:ellipsis;
+            overflow:hidden; white-space:nowrap">
+            <div>    
+                <div style="float:left; width:25%">{{SalesOrderID}} &nbsp; &nbsp;</div>
+                <div style="float:left; width:25%; text-align:left"> &nbsp; &nbsp; &nbsp;{{LifecycleStatusDescription}}</div>
+                <div style="float:left; width:25%; text-align:right">   &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;{{GrossAmount}} &nbsp; &nbsp; </div>
+                <div style="float:left; width:25%; text-align:left">  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;{{CurrencyCode}}</div>
+            </div>    
+            </span>
+        </div>
+    {{/each}}
+    </div>
+    
+</div>

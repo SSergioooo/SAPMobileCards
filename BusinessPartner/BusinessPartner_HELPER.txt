@@ -1,0 +1,10 @@
+Handlebars.registerHelper("gaCheckHelper", function (grossAmount) {
+
+if (grossAmount < 10000) {
+return new Handlebars.SafeString( "<b> <font color=\"#dd512e\">" + grossAmount + "</b> </font>");
+}
+if (grossAmount >= 10000 && grossAmount < 20000 ) {
+    return new Handlebars.SafeString( "<b> <font color=\"#dce004\">" + grossAmount + "</b> </font>");
+}
+return new Handlebars.SafeString( "<b> <font color=\"#51d803\">" + grossAmount + "</b> </font>");
+});

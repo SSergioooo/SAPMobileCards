@@ -1,0 +1,63 @@
+<div id="items-chart">
+    </div>
+      <script type="text/javascript">
+
+         var oData = sap.deck.renderers.context.currentlyRendering.renderer.model.oData;
+         var results = oData.d.ToLineItems.results;
+         var data = [];
+         
+         for (var i = 0; i < results.length ; i++) {
+                     data.push({
+                         key: results[i].ProductID,
+                         value: results[i].GrossAmount
+                     });
+                 }
+
+         var arrayOfZeroValues = data.filter(function(item) {
+             return item.value === 0;
+         });
+         
+         if (arrayOfZeroValues.length === data.length) {
+             var chart = document.getElementById("items-chart");
+             chart.style.fontSize = "20px";
+             chart.style.textAlign = "center";
+             chart.innerHTML = "No Data";
+         } else {
+         var total = d3.sum(data, function(d) { 
+            return d.value; 
+         });
+         data.forEach(function(d) {
+         var percent = (d.value  / total) * 100;
+         if(percent == 0) {
+         d.percentage = percent;
+         }else {
+         d.percentage = percent.toFixed(2);
+         }
+         });
+             var height = 500;
+             var width = 400;
+             var radius = Math.min(width, height) / 2;
+             var legendRectSize = 18;
+             var legendSpacing = 4;
+             var color = d3.scale.ordinal().range(['#15658A', '#85CBED', '#52BACC', '#27A4DE', '#D998CB', '#2c8a15', '#1a8261', '#751982', '#891a53', '#8d931a', '#91883a', '#ffffff', '#000000' ]);
+             var svg = d3.select('#items-chart').append('svg').attr("viewBox", "0 0 " + width + " " + height ).attr("preserveAspectRatio", "xMidYMid meet").append('g').attr('transform', 'translate(' + (width / 2) + ',' + (height / 3.5) + ')');
+             var arc = d3.svg.arc().innerRadius(0).outerRadius(radius * 0.7);
+             var pie = d3.layout.pie().value(function(d) {
+                 return d.value;
+             }).sort(null);
+             var path = svg.selectAll('path').data(pie(data)).enter().append('path').attr('d', arc).attr('fill', function(d) {
+                 return color(d.data.key);
+             });
+             var legend = svg.selectAll('.legend').data(color.domain()).enter().append('g').attr('class', 'legend').attr('transform', function(d, i) {
+                 var height = legendRectSize + legendSpacing;
+             var offset = 65;
+             var horz = -5 * legendRectSize;
+             var vert = 1.5 * i * height + 2.5 * offset;
+                 return 'translate(' + horz + ',' + vert + ')';
+             });
+             legend.append('rect').attr('width', legendRectSize).attr('height', legendRectSize).style('fill', color).style('stroke', color);
+             legend.append('text').attr('x', legendRectSize + legendSpacing).attr('y', legendRectSize - legendSpacing).text(function(d, i) {
+                 return data[i].key + ",  " + data[i].percentage + "%" + " (" + data[i].value + ")";
+             });
+         }
+      </script>

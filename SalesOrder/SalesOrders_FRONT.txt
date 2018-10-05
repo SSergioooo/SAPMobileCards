@@ -1,0 +1,79 @@
+<div id="mySimpleTemplate" class="myTemplate" data-type="text/x-handlebars-template">
+         <div class="header">
+             <h1>
+                 Sales Order
+             </h1>
+             <span class="name">
+                 {{SalesOrderId}}
+             </span>
+         </div>
+         <div class="card-content">
+             <div class="all">
+                 <div class="title-content">
+                     <span class="title">
+                         Order Created At
+                     </span>
+                     <br>
+                     <span class="content" >
+                         <span class="c2g_timestamp">
+                         {{CreatedAt}}
+                         </span>
+                     </span>
+                 </div>
+                 <div class="title-content">
+                     <span class="title">
+                         Order Status
+                     </span>
+                     <br>
+                     <span class="content">
+                         {{LifeCycleStatusName}}
+                     </span>
+                 </div>    
+                 <div class="title-content">
+                     <span class="title">
+                         Customer Name
+                     </span>
+                     <br>
+                     <span class="content">
+                         {{d.ToBusinessPartner.CompanyName}}
+                     </span>
+                 </div>
+                 <div class="title-content">
+                     <span class="title">
+                         Address
+                     </span>
+                     <br>
+                     <span class="content">
+                         <span class="c2g_address">
+                        {{d.ToBusinessPartner.Address.City}}
+                        {{d.ToBusinessPartner.Address.Street}}
+                        {{d.ToBusinessPartner.Address.Building}}
+                        </span>
+                     </span>
+                 </div>
+                 <div class="title-content">
+                     <span class="title">
+                         Phone
+                     </span>
+                     <br>
+                     <span class="content">
+                         <span class="c2g_phoneNumber">
+                         {{d.ToBusinessPartner.PhoneNumber}}
+                         </span>
+                     </span>
+                 </div>
+                 <div class="title-content">
+                     <span class="title">
+                         Email
+                     </span>
+                     <br>
+                     <span class="content">
+                         <span class="c2g_email">
+                            {{d.ToBusinessPartner.EmailAddress}}
+                         </span>
+                     </span>
+                 </div>
+             </div>
+             <img src="SalesOrder.png" alt="" >
+          </div>
+</div>
