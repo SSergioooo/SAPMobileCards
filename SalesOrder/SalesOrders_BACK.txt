@@ -12,7 +12,7 @@
     <table width="100%" style="margin: 0px;">
       <tr>
         <th>ID</th>
-        <th align="center">Net Amount</th> 
+        <th align="center">Amount</th> 
         <th align="right" >Quantity</th>
       </tr>
         {{#each d.Items.results}}
